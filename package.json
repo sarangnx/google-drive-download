@@ -1,0 +1,14 @@
+{
+  "name": "google-drive-download",
+  "version": "1.0.0",
+  "description": "Download files to google drive",
+  "main": "index.js",
+  "author": "Sarang <sarang98divakaran@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^48.0.0",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
+  }
+}
