@@ -1,9 +1,13 @@
 <template>
     <v-app>
-        <v-app-bar app>
+        <v-app-bar
+            app
+            elevate-on-scroll
+            color="white"
+        >
         </v-app-bar>
         <v-content>
-            <v-container>
+            <v-container class="fill-height pa-0" fluid>
                 <nuxt />
             </v-container>
         </v-content>
