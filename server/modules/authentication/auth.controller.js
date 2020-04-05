@@ -1,14 +1,17 @@
 const Helper = require('./auth.helper');
-const helper = new Helper();
 
 class AuthController {
+
+    constructor() {
+        this.helper = new Helper();
+    }
 
     /**
      * Generate url for user authorization.
      * Send the url to web client.
      */
     async generateUrl(req, res, next) {
-        const url = await helper.generateUrl();
+        const url = await this.helper.generateUrl();
 
         res.redirect(url);
     }
@@ -21,7 +24,7 @@ class AuthController {
     async getToken(req, res, next) {
         const { code } = req.query;
 
-        const tokens = await helper.getToken(code);
+        const tokens = await this.helper.getToken(code);
 
         // save tokens in session storage
         req.session.tokens = tokens;
@@ -34,7 +37,7 @@ class AuthController {
      * is success or not.
      */
     isAuthorized(req, res, next) {
-        const authorized = helper.isAuthorized();
+        const authorized = this.helper.isAuthorized();
 
         res.json({
             authorized,
