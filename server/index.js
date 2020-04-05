@@ -32,7 +32,10 @@ async function start() {
             store: new RedisStore({ client: RedisClient }),
             secret: process.env.SESSION_SECRET,
             resave: false,
-            saveUninitialized: false
+            saveUninitialized: false,
+            cookie: {
+                maxAge: 600000 // 10 Minutes in milliseconds
+            }
         })
     );
 
