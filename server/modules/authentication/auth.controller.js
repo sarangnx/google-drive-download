@@ -13,6 +13,29 @@ class AuthController {
         res.redirect(url);
     }
 
+    /**
+     * Get token after user authorizes using url
+     * from generateUrl and redirect to homepage
+     * with parameter auth set to true.
+     */
+    async getToken(req, res, next) {
+        const { code } = req.query;
+
+        await helper.getToken(code);
+        res.redirect('/?auth=true');
+    }
+
+    /**
+     * Send status, whether user authorization
+     * is success or not.
+     */
+    isAuthorized(req, res, next) {
+        const authorized = helper.isAuthorized();
+
+        res.json({
+            authorized,
+        });
+    }
 };
 
 module.exports = AuthController;

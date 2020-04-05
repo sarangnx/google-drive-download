@@ -8,4 +8,8 @@ controller = new Controller();
 
 router.get('/generate', controller.generateUrl);
 
+router.get('/callback', controller.getToken);
+
+router.get('/isauthorized', controller.isAuthorized);
+
 module.exports = router;

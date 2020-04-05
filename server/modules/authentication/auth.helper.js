@@ -14,6 +14,19 @@ class AuthHelper{
     ]
 
     /**
+     * Set this to true when a user authorizes oauth2,
+     * and credentials are set in client.
+     */
+    authorized = false;
+
+    /**
+     * Getter for authorized.
+     */
+    isAuthorized() {
+        return this.authorized;
+    }
+
+    /**
      * Generate url for user authorization
      */
     async generateUrl() {
@@ -24,6 +37,23 @@ class AuthHelper{
         return url;
     }
 
+    /**
+     * After authorization fom url, a callback is invoked with
+     * authorization code. This can be used to get tokens for
+     * API access.
+     *
+     * @param {String} code - Authorization code returned to callback
+     */
+    async getToken(code) {
+        if(!code) {
+            throw new Error('Unauthorized');
+        }
+
+        const { tokens } = await this.client.getToken(code);
+
+        this.client.setCredentials(tokens);
+        this.authorized = true;
+    }
 };
 
 module.exports = AuthHelper;
