@@ -53,6 +53,8 @@ class AuthHelper{
 
         this.client.setCredentials(tokens);
         this.authorized = true;
+
+        return tokens;
     }
 };
 

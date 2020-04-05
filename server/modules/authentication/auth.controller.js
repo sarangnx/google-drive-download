@@ -21,7 +21,11 @@ class AuthController {
     async getToken(req, res, next) {
         const { code } = req.query;
 
-        await helper.getToken(code);
+        const tokens = await helper.getToken(code);
+
+        // save tokens in session storage
+        req.session.tokens = tokens;
+
         res.redirect('/?auth=true');
     }
 
