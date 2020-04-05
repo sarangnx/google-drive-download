@@ -31,7 +31,8 @@ async function start() {
         session({
             store: new RedisStore({ client: RedisClient }),
             secret: process.env.SESSION_SECRET,
-            resave: false
+            resave: false,
+            saveUninitialized: false
         })
     );
 
