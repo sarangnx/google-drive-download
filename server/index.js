@@ -1,8 +1,14 @@
 const express = require('express');
 const consola = require('consola');
+const redis = require('redis');
+const session = require('express-session');
+const connectRedis = require('connect-redis');
 const { Nuxt, Builder } = require('nuxt');
-const app = express();
 const Routes = require('./modules');
+
+const app = express();
+const RedisStore = connectRedis(session);
+const RedisClient = redis.createClient();
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
@@ -20,6 +26,14 @@ async function start() {
         const builder = new Builder(nuxt);
         await builder.build();
     }
+
+    app.use(
+        session({
+            store: new RedisStore({ client: RedisClient }),
+            secret: process.env.SESSION_SECRET,
+            resave: false
+        })
+    );
 
     new Routes(app);
 
