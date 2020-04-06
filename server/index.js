@@ -2,6 +2,7 @@ const express = require('express');
 const consola = require('consola');
 const redis = require('redis');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const connectRedis = require('connect-redis');
 const { Nuxt, Builder } = require('nuxt');
 const Routes = require('./modules');
@@ -38,6 +39,8 @@ async function start() {
             }
         })
     );
+
+    app.use(cookieParser(process.env.SESSION_SECRET));
 
     new Routes(app);
 
