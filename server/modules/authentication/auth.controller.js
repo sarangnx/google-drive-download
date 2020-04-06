@@ -1,19 +1,20 @@
 const Helper = require('./auth.helper');
+const helper = new Helper();
 
 class AuthController {
-
-    constructor() {
-        this.helper = new Helper();
-    }
 
     /**
      * Generate url for user authorization.
      * Send the url to web client.
      */
     async generateUrl(req, res, next) {
-        const url = await this.helper.generateUrl();
+        try{
+            const url = await helper.generateUrl();
 
-        res.redirect(url);
+            res.redirect(url);
+        } catch(err) {
+            next (err);
+        }
     }
 
     /**
@@ -22,14 +23,19 @@ class AuthController {
      * with parameter auth set to true.
      */
     async getToken(req, res, next) {
-        const { code } = req.query;
+        try {
+            const { code } = req.query;
 
-        const tokens = await this.helper.getToken(code);
+            const tokens = await helper.getToken(code);
 
-        // save tokens in session storage
-        req.session.tokens = tokens;
+            // save tokens in session storage
+            req.session.tokens = tokens;
 
-        res.redirect('/?auth=true');
+            res.cookie('auth', true, { maxAge: 600000 });
+            res.redirect('/?auth=true');
+        } catch (err) {
+            next(err);
+        }
     }
 
     /**
@@ -37,11 +43,15 @@ class AuthController {
      * is success or not.
      */
     isAuthorized(req, res, next) {
-        const authorized = this.helper.isAuthorized();
+        try {
+            const authorized = helper.isAuthorized();
 
-        res.json({
-            authorized,
-        });
+            res.json({
+                authorized,
+            });
+        } catch (err) {
+            next(err);
+        }
     }
 };
 
