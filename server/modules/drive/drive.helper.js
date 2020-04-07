@@ -1,3 +1,7 @@
+const { google } = require('googleapis');
+const { parse } = require('url');
+const httpGet = require('http').get;
+const httpsGet = require('https').get;
 
 class DriveHelper {
     constructor() {
@@ -6,6 +10,11 @@ class DriveHelper {
             process.env.CLIENT_SECRET,
             process.env.REDIRECT_URL
         );
+
+        this.drive = google.drive({
+            version: 'v3',
+            auth: this.client
+        });
     }
 
     /**
@@ -13,8 +22,24 @@ class DriveHelper {
      *
      * @param {Object} tokens - Tokens returned after authorization
      */
-    setToken(tokens) {
-        this.client.setCredentials(tokens);
+    async setToken(tokens) {
+        await this.client.setCredentials(tokens);
+    }
+
+    async download(url) {
+        const { protocol } = parse(url);
+        const get = protocol === 'http:' ? httpGet : httpsGet;
+
+        await get(url, async (res) => {
+            await this.drive.files.create({
+                requestBody: {
+                    name: 'test.jpg'
+                },
+                media: {
+                    body: res,
+                },
+            });
+        });
     }
 }
 
