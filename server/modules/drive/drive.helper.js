@@ -23,10 +23,23 @@ class DriveHelper {
      * @param {Object} tokens - Tokens returned after authorization
      */
     async setToken(tokens) {
+        if(!tokens) {
+            throw new Error('Session Exprired.');
+        }
+
         await this.client.setCredentials(tokens);
     }
 
+    /**
+     * Download given url to google drive.
+     *
+     * @param {String} url - Resource url
+     */
     async download(url) {
+        if(!url) {
+            throw new Error('No Url given');
+        }
+
         const { protocol } = parse(url);
         const get = protocol === 'http:' ? httpGet : httpsGet;
 
