@@ -1,7 +1,5 @@
 const { google } = require('googleapis');
-const { parse } = require('url');
-const httpGet = require('http').get;
-const httpsGet = require('https').get;
+const axios = require('axios');
 
 class DriveHelper {
     constructor() {
@@ -40,18 +38,28 @@ class DriveHelper {
             throw new Error('No Url given');
         }
 
-        const { protocol } = parse(url);
-        const get = protocol === 'http:' ? httpGet : httpsGet;
+        /**
+         * Send a get request to the given url,
+         * downloading it to the VM or hosted machine.
+         * res.data will be a readable stream.
+         */
+        const res = await axios({
+            method: 'get',
+            url,
+            responseType: 'stream'
+        });
 
-        await get(url, async (res) => {
-            await this.drive.files.create({
-                requestBody: {
-                    name: 'test.jpg'
-                },
-                media: {
-                    body: res,
-                },
-            });
+        /**
+         * Pass the readable stream to upload the data
+         * to google drive.
+         */
+        await this.drive.files.create({
+            requestBody: {
+                name: 'test.jpg'
+            },
+            media: {
+                body: res.data,
+            },
         });
     }
 }
