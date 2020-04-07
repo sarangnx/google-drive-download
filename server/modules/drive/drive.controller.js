@@ -12,9 +12,11 @@ class DriveController {
             const { url } = req.body;
 
             await helper.setToken(tokens);
-            await helper.download(url);
+            helper.download(url);
 
-            res.end();
+            res.json({
+                message: 'File added to download queue.'
+            });
         } catch (err) {
             next(err);
         }
