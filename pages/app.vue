@@ -8,6 +8,28 @@
             >
                 Sign In With Google
             </v-btn>
+            <v-container
+                v-show="authorized"
+                
+            >
+                <v-row class="d-flex justify-center align-center flex-column">
+                    <v-col cols="12" md="6">
+                        <v-text-field
+                            solo
+                            clearable
+                            v-model="link"
+                            label="download link"
+                        ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="3" class="d-flex justify-center align-center flex-column">
+                        <v-btn
+                            @click="download"
+                        >
+                            Download to Drive
+                        </v-btn>
+                    </v-col>
+                </v-row>
+            </v-container>
         </div>
     </v-col>
 </template>
@@ -17,16 +39,29 @@ export default {
     name: 'app',
     data: () => ({
         authorized: false,
+        link: null,
     }),
     methods:{
-        isAuthorized() {
-            const { auth } = this.$route.query;
+        download() {
+            console.log(this.link);
+        },
+        parseCookie() {
+            let cookie = document.cookie.split(';');
+            cookie = cookie.map((item) => {
+                return item.split('=');
+            });
+            cookie = cookie.reduce((object,item) => {
+                object[item[0]] = item[1];
+                return object;
+            }, {});
 
-            this.authorized = auth === 'true' ? true : false;
+            if(cookie.auth && cookie.auth === 'true') {
+                this.authorized = true;
+            }
         }
     },
     mounted() {
-        this.isAuthorized();
+        this.parseCookie();
     }
 }
 </script>
