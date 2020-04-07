@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const consola = require('consola');
 const redis = require('redis');
 const session = require('express-session');
@@ -28,6 +29,11 @@ async function start() {
         await builder.build();
     }
 
+    // Allow Cross Origin Requests
+    app.use(cors());
+
+    // Use sessions to store tokens of user after authorization
+    // Sessions expire in 10 minutes, requiring users to login again.
     app.use(
         session({
             store: new RedisStore({ client: RedisClient }),
