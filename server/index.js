@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const consola = require('consola');
 const redis = require('redis');
 const session = require('express-session');
@@ -31,6 +32,10 @@ async function start() {
 
     // Allow Cross Origin Requests
     app.use(cors());
+
+    // add post data to req.body
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     // Use sessions to store tokens of user after authorization
     // Sessions expire in 10 minutes, requiring users to login again.
