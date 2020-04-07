@@ -32,8 +32,9 @@ class DriveHelper {
      * Download given url to google drive.
      *
      * @param {String} url - Resource url
+     * @param {String} filename - Filename with extension
      */
-    async download(url) {
+    async download(url, filename = 'filename') {
         if(!url) {
             throw new Error('No Url given');
         }
@@ -55,7 +56,7 @@ class DriveHelper {
          */
         await this.drive.files.create({
             requestBody: {
-                name: 'test.jpg'
+                name: filename
             },
             media: {
                 body: res.data,

@@ -9,10 +9,14 @@ class DriveController {
     async download(req, res, next) {
         try {
             const { tokens } = req.session;
-            const { url } = req.body;
+            const { url, filename } = req.body;
 
             await helper.setToken(tokens);
-            helper.download(url);
+            /**
+             * No need to wait for completion of the process,
+             * as it might take a long time to complete.
+             */
+            helper.download(url, filename);
 
             res.json({
                 message: 'File added to download queue.'
