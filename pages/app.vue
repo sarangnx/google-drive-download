@@ -10,7 +10,7 @@
             </v-btn>
             <v-container
                 v-show="authorized"
-                
+
             >
                 <v-row class="d-flex justify-center align-center flex-column">
                     <v-col cols="12" md="6">
@@ -43,7 +43,17 @@ export default {
     }),
     methods:{
         download() {
-            console.log(this.link);
+            const url = this.link;
+
+            this.$axios({
+                method: 'post',
+                url: '/drive/download',
+                data: {
+                    url,
+                },
+            }).catch((err) => {
+                console.log(err);
+            });
         },
         parseCookie() {
             let cookie = document.cookie.split(';');
