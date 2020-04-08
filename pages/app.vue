@@ -1,5 +1,5 @@
 <template>
-    <v-col>
+    <v-col cols="12" class="fill-height">
         <div class="d-flex justify-center align-center fill-height">
             <v-btn
                 v-show="!authorized"

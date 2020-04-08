@@ -1,15 +1,18 @@
 <template>
-    <v-row class="fill-height">
+    <v-row class="ma-0 fill-height">
+        <home/>
         <app/>
     </v-row>
 </template>
 
 <script>
 import App from './app';
+import Home from './home';
 
 export default {
     components: {
         App,
+        Home,
     },
 };
 </script>

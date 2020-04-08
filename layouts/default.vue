@@ -7,7 +7,7 @@
         >
         </v-app-bar>
         <v-content>
-            <v-container class="fill-height" fluid>
+            <v-container class="pa-0 fill-height" fluid>
                 <nuxt/>
             </v-container>
         </v-content>
