@@ -18,16 +18,24 @@
                     <v-col cols="12" md="6">
                         <v-text-field
                             solo
+                            rounded
                             clearable
                             v-model="link"
-                            label="download link"
-                        ></v-text-field>
+                            hint="http://example.com/movie.mp4"
+                        >
+                            <template slot="label">
+                                Download URL
+                            </template>
+                        </v-text-field>
                     </v-col>
                     <v-col cols="12" md="3" class="d-flex justify-center align-center flex-column">
                         <v-btn
                             @click="download"
+                            color="#fff"
+                            large
                         >
-                            Download to Drive
+                            <v-img src="/google-drive64.png" width="24px" height="24px" contain class="mr-4"/>
+                            <span>Download to Drive</span>
                         </v-btn>
                     </v-col>
                 </v-row>

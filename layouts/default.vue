@@ -11,7 +11,7 @@
                 <nuxt/>
             </v-container>
         </v-content>
-        <v-footer>
+        <v-footer dark padless>
         </v-footer>
     </v-app>
 </template>
