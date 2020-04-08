@@ -11,7 +11,7 @@ class AuthController {
         try{
             const url = await helper.generateUrl();
 
-            res.cookie('auth', false, { maxAge: 600000 });
+            res.cookie('auth', false, { maxAge: 6000000 });
             res.redirect(url);
         } catch(err) {
             next (err);
@@ -32,7 +32,7 @@ class AuthController {
             // save tokens in session storage
             req.session.tokens = tokens;
 
-            res.cookie('auth', true, { maxAge: 600000 });
+            res.cookie('auth', true, { maxAge: 6000000 });
             res.redirect('/');
         } catch (err) {
             next(err);
