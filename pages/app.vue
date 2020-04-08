@@ -4,9 +4,11 @@
             <v-btn
                 v-show="!authorized"
                 href="/auth/generate"
-                target="_blank"
+                large
+                color="#fff"
             >
-                Sign In With Google
+                <v-img src="/google-logo.svg" class="mr-4"/>
+                <span>Sign In With Google</span>
             </v-btn>
             <v-container
                 v-show="authorized"
