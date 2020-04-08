@@ -7,9 +7,12 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const connectRedis = require('connect-redis');
 const { Nuxt, Builder } = require('nuxt');
+const socketio = require('socket.io');
+const http = require('http');
 const Routes = require('./modules');
 
 const app = express();
+const server = http.createServer(app);
 const RedisStore = connectRedis(session);
 const RedisClient = redis.createClient();
 
@@ -20,6 +23,20 @@ config.dev = process.env.NODE_ENV !== 'production';
 async function start() {
     // Init Nuxt.js
     const nuxt = new Nuxt(config);
+
+    const io = socketio(server);
+    // add socketio to request object
+    app.use((req, res, next) => {
+        req.io = io;
+        next();
+    });
+
+    // Join socketio rooms. Each user joins a seperate room.
+    io.sockets.on('connection', function (socket) {
+        socket.on('join', function (data) {
+            socket.join(data);
+        });
+    });
 
     const { host, port } = nuxt.options.server;
 
@@ -38,7 +55,7 @@ async function start() {
     app.use(bodyParser.urlencoded({ extended: false }));
 
     // Use sessions to store tokens of user after authorization
-    // Sessions expire in 10 minutes, requiring users to login again.
+    // Sessions expire in 60 minutes, requiring users to login again.
     app.use(
         session({
             store: new RedisStore({ client: RedisClient }),
@@ -46,7 +63,7 @@ async function start() {
             resave: false,
             saveUninitialized: false,
             cookie: {
-                maxAge: 600000 // 10 Minutes in milliseconds
+                maxAge: 6000000 // 60 Minutes in milliseconds
             }
         })
     );
@@ -59,7 +76,7 @@ async function start() {
     app.use(nuxt.render);
 
     // Listen the server
-    app.listen(port, host);
+    server.listen(port, host);
     consola.ready({
         message: `Server listening on http://${host}:${port}`,
         badge: true
