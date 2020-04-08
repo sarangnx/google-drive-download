@@ -35,21 +35,28 @@
 </template>
 
 <script>
+import io from 'socket.io-client';
+
 export default {
     name: 'app',
     data: () => ({
         authorized: false,
         link: null,
+        id: null,
+        socket: null,
     }),
     methods:{
         download() {
             const url = this.link;
+            this.id = Date.now();
+            this.socket.emit('join', this.id);
 
             this.$axios({
                 method: 'post',
                 url: '/drive/download',
                 data: {
                     url,
+                    id: this.id,
                 },
             }).catch((err) => {
                 console.log(err);
@@ -72,6 +79,12 @@ export default {
     },
     mounted() {
         this.parseCookie();
+
+        // create a socket connection to server.
+        this.socket = io();
+        this.socket.on('upload:progress', (data) => {
+            console.log(data);
+        });
     }
 }
 </script>

@@ -33,8 +33,10 @@ class DriveHelper {
      *
      * @param {String} url - Resource url
      * @param {String} filename - Filename with extension
+     * @param {Object} io - Socket io instance
+     * @param {String} id - Socket io room id
      */
-    async download(url, filename = 'filename') {
+    async download(url, filename = 'filename', io, id) {
         if(!url) {
             throw new Error('No Url given');
         }
@@ -50,6 +52,7 @@ class DriveHelper {
             responseType: 'stream'
         });
 
+        const fileSize = res.headers['content-length'];
         /**
          * Pass the readable stream to upload the data
          * to google drive.
@@ -61,6 +64,11 @@ class DriveHelper {
             media: {
                 body: res.data,
             },
+        },{
+            onUploadProgress: (e) => {
+                const progress = (e.bytesRead / fileSize) * 100;
+                io.sockets.in(id).emit('upload:progress', { progress });
+            }
         });
     }
 }
