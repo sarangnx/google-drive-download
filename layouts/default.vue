@@ -7,15 +7,17 @@
         >
         </v-app-bar>
         <v-content>
-            <v-container class="pa-0 fill-height" fluid>
+            <v-container class="pa-0" fluid>
                 <nuxt/>
             </v-container>
         </v-content>
+        <v-footer>
+        </v-footer>
     </v-app>
 </template>
 
 <script>
 export default {
-
+    name: 'default-layout'
 };
 </script>

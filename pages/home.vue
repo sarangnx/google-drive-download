@@ -1,5 +1,5 @@
 <template>
-    <v-col cols="12" class="fill-height">
+    <v-col cols="12" ref="fullheight">
         <div class="d-flex justify-center align-center fill-height">
             Home
         </div>
@@ -7,7 +7,10 @@
 </template>
 
 <script>
+import fullHeight from '@/mixins/fullHeight';
+
 export default {
-    name: 'home'
+    name: 'home',
+    mixins: [fullHeight],
 }
 </script>

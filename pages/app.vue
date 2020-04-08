@@ -1,5 +1,5 @@
 <template>
-    <v-col cols="12" class="fill-height">
+    <v-col cols="12" ref="fullheight">
         <div class="d-flex justify-center align-center fill-height">
             <v-btn
                 v-show="!authorized"
@@ -36,8 +36,10 @@
 
 <script>
 import io from 'socket.io-client';
+import fullHeight from '@/mixins/fullHeight';
 
 export default {
+    mixins: [fullHeight],
     name: 'app',
     data: () => ({
         authorized: false,
