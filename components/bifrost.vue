@@ -144,19 +144,31 @@
     max-width: 100%;
 }
 
-@keyframes hovering {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(2px, -5px, 0px) }
+/* == SERVER ANIMATION ============================ */
+@keyframes hovering-right {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(3px, -3px); }
 }
 
-.__server__left, .__server__right {
-    animation: hovering 1s infinite;
+.__server__right {
+    animation: hovering-right 1s infinite;
     animation-direction: alternate;
 }
 
+@keyframes hovering-left {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-3px, -3px); }
+}
+
+.__server__left {
+    animation: hovering-left 1s infinite;
+    animation-direction: alternate;
+}
+/* ================================================= */
+
 @keyframes flying {
   0%   { transform: translate(0, 0); }
-  100% { transform: translate(1500px, 1000px) }
+  100% { transform: translate(1500px, 1000px); }
 }
 
 .__file {
