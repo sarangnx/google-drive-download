@@ -1,6 +1,6 @@
 <template>
     <div class="__bifrost">
-        <svg width="540.14" height="401.66" version="1.1" viewBox="0 0 142.91 106.27" class="_svg">
+        <svg width="500" height="500" version="1.1" viewBox="0 0 160 160" class="__svg" preserveAspectRatio="xMinYMin meet">
             <defs>
                 <filter id="f" x="0" y="0" width="829" height="564" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -29,7 +29,7 @@
                     <stop stop-color="#fff" stop-opacity="0" offset="1"/>
                 </radialGradient>
             </defs>
-            <g transform="translate(-37.71 -94.607)" fill="none">
+            <g transform="translate(-30 -70)" fill="none">
                 <g transform="matrix(.1575 0 0 .1575 65.49 100.57)">
                     <g clip-rule="evenodd" fill-rule="evenodd" filter="url(#e)">
                         <path d="m298 590c161.27 0 292-130.73 292-292s-130.73-292-292-292-292 130.73-292 292 130.73 292 292 292zm0-13.847c153.62 0 278.15-124.53 278.15-278.15s-124.53-278.15-278.15-278.15-278.15 124.53-278.15 278.15 124.53 278.15 278.15 278.15z" fill="#de0202"/>
@@ -41,25 +41,29 @@
                         <path d="m298 539.94c133.62 0 241.94-108.32 241.94-241.94s-108.32-241.94-241.94-241.94-241.94 108.32-241.94 241.94 108.32 241.94 241.94 241.94zm0-11.473c127.28 0 230.47-103.18 230.47-230.47s-103.18-230.47-230.47-230.47-230.47 103.18-230.47 230.47 103.18 230.47 230.47 230.47z" fill="#2d0099"/>
                     </g>
                 </g>
-                <g transform="matrix(.16772 -.10331 .10331 .16772 44.025 114.29)">
-                    <rect x=".68213" y=".81641" width="92.439" height="137" rx="10" fill="#2d2a40"/>
-                    <rect x="7.3188" y="12.194" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <rect x="7.3188" y="45.377" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <rect x="7.3188" y="78.56" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <circle cx="16.8" cy="88.515" r="4.2664" fill="#59ec14"/>
-                    <circle cx="16.8" cy="55.332" r="4.2664" fill="#ec8814"/>
-                    <circle cx="16.8" cy="22.149" r="4.2664" fill="#59ec14"/>
-                    <circle cx="46.902" cy="119.09" r="4.9775" fill="#9694a5"/>
+                <g class="__server__left">
+                    <g transform="matrix(.16772 -.10331 .10331 .16772 44.025 114.29)">
+                        <rect x=".68213" y=".81641" width="92.439" height="137" rx="10" fill="#2d2a40"/>
+                        <rect x="7.3188" y="12.194" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <rect x="7.3188" y="45.377" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <rect x="7.3188" y="78.56" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <circle cx="16.8" cy="88.515" r="4.2664" fill="#59ec14"/>
+                        <circle cx="16.8" cy="55.332" r="4.2664" fill="#ec8814"/>
+                        <circle cx="16.8" cy="22.149" r="4.2664" fill="#59ec14"/>
+                        <circle cx="46.902" cy="119.09" r="4.9775" fill="#9694a5"/>
+                    </g>
                 </g>
-                <g transform="matrix(.11643 .1589 -.1589 .11643 170.69 148.47)">
-                    <rect x=".68213" y=".81641" width="92.439" height="137" rx="10" fill="#2d2a40"/>
-                    <rect x="7.3188" y="12.194" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <rect x="7.3188" y="45.377" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <rect x="7.3188" y="78.56" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
-                    <circle cx="16.8" cy="88.515" r="4.2664" fill="#59ec14"/>
-                    <circle cx="16.8" cy="55.332" r="4.2664" fill="#ec8814"/>
-                    <circle cx="16.8" cy="22.149" r="4.2664" fill="#59ec14"/>
-                    <circle cx="46.902" cy="119.09" r="4.9775" fill="#9694a5"/>
+                <g class="__server__right">
+                    <g transform="matrix(.11643 .1589 -.1589 .11643 170.69 148.47)">
+                        <rect x=".68213" y=".81641" width="92.439" height="137" rx="10" fill="#2d2a40"/>
+                        <rect x="7.3188" y="12.194" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <rect x="7.3188" y="45.377" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <rect x="7.3188" y="78.56" width="80.588" height="19.436" rx="9.718" fill="#55516b"/>
+                        <circle cx="16.8" cy="88.515" r="4.2664" fill="#59ec14"/>
+                        <circle cx="16.8" cy="55.332" r="4.2664" fill="#ec8814"/>
+                        <circle cx="16.8" cy="22.149" r="4.2664" fill="#59ec14"/>
+                        <circle cx="46.902" cy="119.09" r="4.9775" fill="#9694a5"/>
+                    </g>
                 </g>
                 <g transform="matrix(.15286 .00059367 -.00063951 .1419 39.673 103.25)">
                     <g transform="translate(-9.9863 120.58)" filter="url(#f)">
@@ -141,8 +145,8 @@
 }
 
 @keyframes hovering {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(0px, -10px) }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(2px, -5px, 0px) }
 }
 
 .__server__left, .__server__right {
