@@ -2,15 +2,6 @@
     <div class="__bifrost">
         <svg class="__svg" width="210mm" height="297mm" viewBox="0 0 210 297" id="svg8">
             <defs id="defs2">
-                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" y="0" x="0" id="filter0_d">
-                    <feFlood id="feFlood48" result="BackgroundImageFix" flood-opacity="0"/>
-                    <feColorMatrix id="feColorMatrix50" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"/>
-                    <feOffset id="feOffset52" dy="4" dx="4"/>
-                    <feGaussianBlur id="feGaussianBlur54" stdDeviation="5" />
-                    <feColorMatrix id="feColorMatrix56" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" type="matrix" />
-                    <feBlend id="feBlend58" result="effect1_dropShadow" in2="BackgroundImageFix" mode="normal" />
-                    <feBlend id="feBlend60" result="shape" in2="effect1_dropShadow" in="SourceGraphic" mode="normal" />
-                </filter>
                 <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="564" width="829" y="0" x="0" id="filter0_d-3">
                     <feFlood id="feFlood104" result="BackgroundImageFix" flood-opacity="0" />
                     <feColorMatrix id="feColorMatrix106" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha" />
@@ -19,15 +10,6 @@
                     <feColorMatrix id="feColorMatrix112" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" type="matrix" />
                     <feBlend id="feBlend114" result="effect1_dropShadow" in2="BackgroundImageFix" mode="normal" />
                     <feBlend id="feBlend116" result="shape" in2="effect1_dropShadow" in="SourceGraphic" mode="normal" />
-                </filter>
-                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="604" width="604" y="0" x="0" id="filter0_d-6">
-                    <feFlood id="feFlood155" result="BackgroundImageFix" flood-opacity="0" />
-                    <feColorMatrix id="feColorMatrix157" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha" />
-                    <feOffset id="feOffset159" dy="4" dx="4" />
-                    <feGaussianBlur id="feGaussianBlur161" stdDeviation="5" />
-                    <feColorMatrix id="feColorMatrix163" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" type="matrix" />
-                    <feBlend id="feBlend165" result="effect1_dropShadow" in2="BackgroundImageFix" mode="normal" />
-                    <feBlend id="feBlend167" result="shape" in2="effect1_dropShadow" in="SourceGraphic" mode="normal" />
                 </filter>
                 <pattern height="1" width="1" patternContentUnits="objectBoundingBox" id="pattern0">
                     <use id="use279" transform="scale(0.00190476 0.00129702)" xlink:href="#image0" />
@@ -58,7 +40,7 @@
             </defs>
             <g  id="layer1">
                 <g style="fill:none" id="g194" transform="matrix(0.15749852,0,0,0.15749852,65.490457,100.56632)">
-                    <g style="filter:url(#filter0_d-6)" id="g153">
+                    <g style="filter:url(#filter0_d-3)" id="g153">
                         <path id="path139" d="M 298,590 C 459.267,590 590,459.267 590,298 590,136.733 459.267,6 298,6 136.733,6 6,136.733 6,298 6,459.267 136.733,590 298,590 Z m 0,-13.847 C 451.62,576.153 576.153,451.62 576.153,298 576.153,144.38 451.62,19.8466 298,19.8466 144.38,19.8466 19.8464,144.38 19.8464,298 19.8464,451.62 144.38,576.153 298,576.153 Z" style="clip-rule:evenodd;fill:#de0202;fill-rule:evenodd" />
                         <path id="path141" d="M 298,581.657 C 454.659,581.657 581.657,454.659 581.657,298 581.657,141.34 454.659,14.3428 298,14.3428 141.34,14.3428 14.3428,141.34 14.3428,298 14.3428,454.659 141.34,581.657 298,581.657 Z m 0,-13.451 C 447.231,568.206 568.206,447.231 568.206,298 568.206,148.769 447.231,27.7937 298,27.7937 148.769,27.7937 27.7937,148.769 27.7937,298 27.7937,447.231 148.769,568.206 298,568.206 Z" style="clip-rule:evenodd;fill:#fd6130;fill-rule:evenodd" />
                         <path id="path143" d="M 298,573.314 C 450.052,573.314 573.314,450.052 573.314,298 573.314,145.948 450.052,22.6858 298,22.6858 145.948,22.6858 22.6855,145.948 22.6855,298 22.6855,450.052 145.948,573.314 298,573.314 Z m 0,-13.055 C 442.842,560.259 560.259,442.842 560.259,298 560.259,153.158 442.842,35.7411 298,35.7411 153.158,35.7411 35.741,153.158 35.741,298 35.741,442.842 153.158,560.259 298,560.259 Z" style="clip-rule:evenodd;fill:#fdf701;fill-rule:evenodd" />
