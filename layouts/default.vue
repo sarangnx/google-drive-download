@@ -5,7 +5,7 @@
             elevate-on-scroll
             color="#2541B2"
         >
-            <div class="font-weight-black grey--text text--lighten-1">
+            <div class="font-weight-black white--text">
                 BIFROST
             </div>
         </v-app-bar>

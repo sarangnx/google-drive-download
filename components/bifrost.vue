@@ -1,6 +1,6 @@
 <template>
     <div class="__bifrost">
-        <svg width="500" height="auto" version="1.1" viewBox="0 0 160 160" class="__svg" preserveAspectRatio="xMinYMin meet">
+        <svg width="500" version="1.1" viewBox="0 0 160 160" class="__svg" preserveAspectRatio="xMinYMin meet">
             <defs>
                 <filter id="f" x="0" y="0" width="829" height="564" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
