@@ -10,10 +10,25 @@
                 </div>
                 <div class="subtitle-1">
                     <p class="__sub">
-                        BIFROST downloads any link directly to your
+                        <v-tooltip top color="white">
+                            <template v-slot:activator="{ on }">
+                                <span v-on="on" class="__pointer">Bifröst</span>
+                            </template>
+                            <div class="d-flex flex-column black--text">
+                                <span>In Norse mythology,</span>
+                                <span>Bifröst is a burning rainbow bridge</span>
+                                <span>that reaches between Midgard and</span>
+                                <span>Asgard, the realm of the gods.</span>
+                            </div>
+                        </v-tooltip>
+                        downloads any link directly to your
                         Google Drive<sup><small>TM</small></sup>.
-                    </p>
+                    </p>                    
                 </div>
+                <v-btn color="#0090C1" to="#drive">
+                    <span class="white--text">USE APP</span>
+                    <v-icon right color="white">mdi-arrow-down</v-icon>
+                </v-btn>
             </div>
         </div>
     </v-col>
@@ -43,10 +58,10 @@ export default {
 .__sub {
     color: white;
     font-family: monospace;
-    font-size: 0.75em;
+    font-size: calc( 6px + 0.75vw);
 }
 .__display {
     color: white;
-    font-size: 3em;
+    font-size: calc( 20px + 2.5vw);
 }
 </style>
