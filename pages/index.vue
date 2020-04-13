@@ -1,7 +1,7 @@
 <template>
     <v-row class="ma-0 fill-height">
-        <home/>
-        <app/>
+        <home id="home"/>
+        <app id="drive"/>
     </v-row>
 </template>
 
