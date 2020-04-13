@@ -4,7 +4,16 @@
             <div class="__columns d-flex justify-center align-center">
                 <bifrost/>
             </div>
-            <div class="__columns">
+            <div class="__columns d-flex justify-center align-center flex-column">
+                <div class="text-uppercase font-weight-black __display">
+                    Download to Drive
+                </div>
+                <div class="subtitle-1">
+                    <p class="__sub">
+                        BIFROST downloads any link directly to your
+                        Google Drive<sup><small>TM</small></sup>.
+                    </p>
+                </div>
             </div>
         </div>
     </v-col>
@@ -27,5 +36,17 @@ export default {
 .__columns {
     height: 100%;
     width: 100%;
+}
+.sky {
+    background: #2541B2;
+}
+.__sub {
+    color: white;
+    font-family: monospace;
+    font-size: 0.75em;
+}
+.__display {
+    color: white;
+    font-size: 3em;
 }
 </style>
