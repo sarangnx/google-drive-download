@@ -2,19 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const consola = require('consola');
-const redis = require('redis');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const connectRedis = require('connect-redis');
 const { Nuxt, Builder } = require('nuxt');
 const socketio = require('socket.io');
 const http = require('http');
+const MemoryStore = require('memorystore')(session);
 const Routes = require('./modules');
 
 const app = express();
 const server = http.createServer(app);
-const RedisStore = connectRedis(session);
-const RedisClient = redis.createClient();
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
@@ -58,12 +55,14 @@ async function start() {
     // Sessions expire in 60 minutes, requiring users to login again.
     app.use(
         session({
-            store: new RedisStore({ client: RedisClient }),
+            store: new MemoryStore({
+                checkPeriod: 43200000, // clear every 12h
+            }),
             secret: process.env.SESSION_SECRET,
             resave: false,
             saveUninitialized: false,
             cookie: {
-                maxAge: 6000000 // 60 Minutes in milliseconds
+                maxAge: 3600000 // 60 Minutes in milliseconds
             }
         })
     );

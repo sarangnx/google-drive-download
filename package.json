@@ -17,7 +17,6 @@
     "@nuxtjs/axios": "^5.3.6",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
-    "connect-redis": "^4.0.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
@@ -26,8 +25,8 @@
     "express-session": "^1.17.0",
     "googleapis": "^48.0.0",
     "got": "^10.7.0",
+    "memorystore": "^1.6.2",
     "nuxt": "^2.0.0",
-    "redis": "^3.0.2",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "vue2-transitions": "^0.3.0"
