@@ -146,7 +146,6 @@
     offset-path: Path('M16 36 A 61 61 0 1 1 132 75');
     offset-rotate: auto;
     animation: move 6s infinite ease;
-    animation-delay: 10s;
 }
 
 @keyframes move {
