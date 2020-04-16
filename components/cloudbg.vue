@@ -97,4 +97,29 @@ g[class*="cloud-"] {
         width: 100%;
     }
 }
+
+.cloud-0 {
+    animation: toright 40s infinite linear;
+}
+
+.cloud-1 {
+    animation: toright 30s infinite linear;
+}
+
+.cloud-2 {
+    animation: toright 20s infinite linear;
+}
+
+.cloud-3 {
+    animation: toright 10s infinite linear;
+}
+
+@keyframes toright {
+    0% {
+        transform: translateX(-100vw);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
 </style>
