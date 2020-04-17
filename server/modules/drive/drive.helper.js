@@ -1,6 +1,7 @@
 const { google } = require('googleapis');
 const axios = require('axios');
 const mime = require('mime');
+const APIError = require('../utils/error');
 
 class DriveHelper {
     constructor() {
@@ -23,7 +24,7 @@ class DriveHelper {
      */
     async setToken(tokens) {
         if(!tokens) {
-            throw new Error('Session Exprired.');
+            throw new APIError('Session Exprired.', 401, 'SESSION_EXPIRED');
         }
 
         await this.client.setCredentials(tokens);
@@ -39,7 +40,7 @@ class DriveHelper {
      */
     async download(url, filename, io, id) {
         if(!url) {
-            throw new Error('No Url given');
+            throw new APIError('No Url given', 400, 'MISSING_URL');
         }
 
         /**

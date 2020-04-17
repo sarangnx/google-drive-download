@@ -9,6 +9,7 @@ const socketio = require('socket.io');
 const http = require('http');
 const MemoryStore = require('memorystore')(session);
 const Routes = require('./modules');
+const errorHandler = require('./modules/utils/errorHandler');
 
 const app = express();
 const server = http.createServer(app);
@@ -73,6 +74,9 @@ async function start() {
 
     // Give nuxt middleware to express
     app.use(nuxt.render);
+
+    // Error Handler
+    app.use(errorHandler);
 
     // Listen the server
     server.listen(port, host);
