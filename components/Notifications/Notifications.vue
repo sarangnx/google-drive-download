@@ -34,9 +34,9 @@ export default {
         }),
     },
     methods: {
-        ...mapActions([
-            'notifications/remove',
-        ]),
+        ...mapActions({
+            remove: 'notifications/remove',
+        }),
     },
 };
 </script>
