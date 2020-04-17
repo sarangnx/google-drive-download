@@ -65,3 +65,10 @@ export const actions = {
         commit('remove', timestamp);
     }
 };
+
+export const getters = {
+    // get notifications
+    list(state) {
+        return state.list;
+    }
+}
