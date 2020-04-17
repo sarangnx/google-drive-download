@@ -30,12 +30,12 @@ export default {
     },
     computed: {
         ...mapGetters({
-            notifications: 'list',
+            notifications: 'notifications/list',
         }),
     },
     methods: {
         ...mapActions([
-            'remove'
+            'notifications/remove',
         ]),
     },
 };
