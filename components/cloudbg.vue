@@ -1,6 +1,6 @@
 <template>
     <div class="cloud__bg__container">
-        <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" class="cloud__bg__svg" preserveAspectRatio ="xMidYMid slice">
+        <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" class="cloud__bg__svg" preserveAspectRatio ="xMinYMin slice">
             <g id="clouds__bg">
                 <g filter="url(#filter_d)" class="cloud-0">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M939.97 157.718C939.903 157.718 939.836 157.718 939.769 157.718C938.621 150.554 932.425 145.066 924.93 145.035C922.94 145.027 921.039 145.404 919.297 146.096C916.241 141.253 910.851 138.026 904.699 138C895.126 137.96 887.333 145.686 887.293 155.257C887.286 156.879 887.502 158.45 887.913 159.941C883.772 162.616 881.022 167.264 881 172.561C880.967 180.369 886.873 186.817 894.475 187.628L894.475 187.707L941.124 187.902L941.125 187.848C948.863 187.231 954.966 180.773 955 172.871C955.035 164.538 948.306 157.754 939.97 157.719L939.97 157.718Z" />
@@ -79,6 +79,8 @@
 </template>
 
 <style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
+
 /* all clouds have white fill */
 g[class*="cloud-"] {
     fill: white;
@@ -99,27 +101,53 @@ g[class*="cloud-"] {
 }
 
 .cloud-0 {
-    animation: toright 40s infinite linear;
-}
-
-.cloud-1 {
-    animation: toright 30s infinite linear;
-}
-
-.cloud-2 {
     animation: toright 20s infinite linear;
 }
 
-.cloud-3 {
+.cloud-1 {
+    animation: toright 15s infinite linear;
+}
+
+.cloud-2 {
     animation: toright 10s infinite linear;
+}
+
+.cloud-3 {
+    animation: toright 5s infinite linear;
+}
+
+@media #{map-get($display-breakpoints, 'md-and-up')} {
+    .cloud-0 {
+        animation: toright 40s infinite linear;
+    }
+
+    .cloud-1 {
+        animation: toright 30s infinite linear;
+    }
+
+    .cloud-2 {
+        animation: toright 20s infinite linear;
+    }
+
+    .cloud-3 {
+        animation: toright 10s infinite linear;
+    }
 }
 
 @keyframes toright {
     0% {
         transform: translateX(-100vw);
+        // opacity: 50%;
+    }
+    10% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 100%;
     }
     100% {
         transform: translateX(100vw);
+        // opacity: 0%;
     }
 }
 </style>
