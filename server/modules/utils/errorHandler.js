@@ -22,5 +22,7 @@ module.exports = function (err, req, res, next) {
     const code = parseInt(err.statusCode, 10) || 500;
 
     res.status(code);
-    res.json(response);
+    res.json({
+        error: response
+    });
 }
