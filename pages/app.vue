@@ -75,7 +75,13 @@ export default {
                     id: this.id,
                 },
             }).catch((err) => {
-                console.log(err);
+                if( err.response && err.response.data && err.response.data.error ) {
+                    const error = err.response.data.error;
+                    console.error(error.message);
+                    if( error.type === 'SESSION_EXPIRED' || err.response.status === 401 ) {
+                        this.authorized = false;
+                    }
+                }
             });
         },
         parseCookie() {
