@@ -1,5 +1,6 @@
 <template>
-    <v-col cols="12" ref="fullheight">
+    <v-col cols="12" ref="fullheight" class="drive">
+        <cloud-bg/>
         <div class="d-flex justify-center align-center fill-height">
             <v-btn
                 v-show="!authorized"
@@ -18,7 +19,6 @@
                     <v-col cols="12" md="6">
                         <v-text-field
                             solo
-                            rounded
                             clearable
                             v-model="link"
                             hint="http://example.com/movie.mp4"
@@ -30,7 +30,7 @@
                     </v-col>
                     <v-col cols="12" md="3" class="d-flex justify-center align-center flex-column">
                         <v-btn
-                            @click="download"
+                            @click.prevent="download"
                             color="#fff"
                             large
                         >
@@ -47,9 +47,13 @@
 <script>
 import io from 'socket.io-client';
 import fullHeight from '@/mixins/fullHeight';
+import CloudBg from '@/components/cloudbg';
 
 export default {
     mixins: [fullHeight],
+    components: {
+        CloudBg,
+    },
     name: 'app',
     data: () => ({
         authorized: false,
@@ -100,3 +104,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.drive {
+    position: relative;
+}
+</style>
