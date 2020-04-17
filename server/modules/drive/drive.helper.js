@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const axios = require('axios');
+const mime = require('mime');
 
 class DriveHelper {
     constructor() {
@@ -36,7 +37,7 @@ class DriveHelper {
      * @param {Object} io - Socket io instance
      * @param {String} id - Socket io room id
      */
-    async download(url, filename = 'filename', io, id) {
+    async download(url, filename, io, id) {
         if(!url) {
             throw new Error('No Url given');
         }
@@ -53,6 +54,14 @@ class DriveHelper {
         });
 
         const fileSize = res.headers['content-length'];
+        const fileType = res.headers['content-type'];
+        const ext = mime.getExtension(fileType);
+
+        // default file naming scheme
+        if(!filename) {
+            filename = `${Date.now()}.${ext}`;
+        }
+
         /**
          * Pass the readable stream to upload the data
          * to google drive.

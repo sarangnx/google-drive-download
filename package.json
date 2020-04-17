@@ -26,6 +26,7 @@
     "googleapis": "^48.0.0",
     "got": "^10.7.0",
     "memorystore": "^1.6.2",
+    "mime": "^2.4.4",
     "nuxt": "^2.0.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
