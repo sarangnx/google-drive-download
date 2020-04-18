@@ -1,5 +1,9 @@
 <template>
-    <v-alert :color="type" @click.native.stop="tryClose">
+    <v-alert :color="type" @click.native.stop="tryClose" class="notification"
+        :class="[horizontalAlign]"
+        :style="customPosition"
+        max-width="500"
+    >
         <template v-slot:prepend>
             <template v-if="icon">
                 <v-icon left>{{ icon }}</v-icon>
@@ -14,19 +18,26 @@
         </template>
 
         <template v-slot:close>
-            <v-btn @click.prevent.stop="close" icon v-if="showClose">
+            <v-btn @click.prevent.stop="close" icon v-if="showClose" class="ml-2">
                 <v-icon>mdi-close-box</v-icon>
             </v-btn>
         </template>
     </v-alert>
 </template>
+
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
     name: 'notification',
     props: {
         message: String,
         title: String,
         icon: String,
+        height: {
+            type: Number,
+            default: 0
+        },
         type: {
             type: String,
             default: 'info',
@@ -79,45 +90,50 @@ export default {
             }
         },
     },
-    data() {
-        return {
-            elmHeight: 0
-        };
-    },
     computed: {
-        hasIcon() {
-            return this.icon && this.icon.length > 0;
+        ...mapGetters({
+            notifications: 'notifications/list',
+        }),
+        customPosition() {
+            const initialMargin = 20;
+
+            // get alerts of the same alignment type and timestamp <= this
+            const sameAlerts = this.notifications.filter(alert => {
+                return (
+                    alert.horizontalAlign === this.horizontalAlign &&
+                    alert.verticalAlign === this.verticalAlign &&
+                    alert.timestamp <= this.timestamp
+                );
+            });
+
+            // calculate total height of those same alerts for offsetting this
+            const totalHeight = sameAlerts.reduce((total, alert) => {
+                if(alert.timestamp !== this.timestamp) {
+                    total = total + ( alert.height ? alert.height : 0 ) + 10;
+                }
+                return total;
+            }, 0);
+
+            // find offset
+            const pixels = totalHeight + initialMargin;
+
+            let styles = {};
+            if (this.verticalAlign === 'top') {
+                styles.top = `${pixels}px`;
+            } else {
+                styles.bottom = `${pixels}px`;
+            }
+            return styles;
         }
-        // customPosition() {
-        //     let initialMargin = 20;
-        //     let alertHeight = this.elmHeight + 10;
-        //     let sameAlertsCount = this.$notifications.state.filter(alert => {
-        //         return (
-        //             alert.horizontalAlign === this.horizontalAlign &&
-        //             alert.verticalAlign === this.verticalAlign &&
-        //             alert.timestamp <= this.timestamp
-        //         );
-        //     }).length;
-        //     if (this.$notifications.settings.overlap) {
-        //         sameAlertsCount = 1;
-        //     }
-        //     let pixels = (sameAlertsCount - 1) * alertHeight + initialMargin;
-        //     let styles = {};
-        //     if (this.verticalAlign === 'top') {
-        //         styles.top = `${pixels}px`;
-        //     } else {
-        //         styles.bottom = `${pixels}px`;
-        //     }
-        //     return styles;
-        // }
     },
     methods: {
+        ...mapActions({
+            setHeight: 'notifications/setHeight',
+        }),
         close() {
             this.$emit('close', this.timestamp);
         },
         tryClose(evt) {
-            console.log('fuck.......')
-            return;
             if (this.clickHandler) {
                 this.clickHandler(evt, this);
             }
@@ -125,30 +141,26 @@ export default {
                 this.close();
             }
         }
+    },
+    mounted() {
+        const bounds = this.$el.getBoundingClientRect();
+        this.setHeight({ timestamp: this.timestamp, height: bounds.height });
+
+        if (this.timeout) {
+            setTimeout(this.close, this.timeout);
+        }
     }
-    // mounted() {
-    //     this.elmHeight = this.$el.clientHeight;
-    //     if (this.timeout) {
-    //         setTimeout(this.close, this.timeout);
-    //     }
-    // }
 };
 </script>
+
 <style lang="scss">
-.notifications .alert {
-    position: fixed;
-    z-index: 10000;
-    &[data-notify='container'] {
-        max-width: 500px;
-    }
-    &.center {
-        margin: 0 auto;
-    }
+.notification {
+    position: absolute;
     &.left {
-        left: 20px;
+        left: 10px;
     }
     &.right {
-        right: 20px;
+        right: 10px;
     }
 }
 </style>
