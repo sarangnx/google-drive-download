@@ -1,5 +1,6 @@
 <template>
     <v-app>
+        <notifications/>
         <v-app-bar
             app
             elevate-on-scroll
@@ -20,7 +21,12 @@
 </template>
 
 <script>
+import Notifications from '@/components/Notifications/Notifications';
+
 export default {
-    name: 'default-layout'
+    name: 'default-layout',
+    components: {
+        Notifications,
+    },
 };
 </script>
