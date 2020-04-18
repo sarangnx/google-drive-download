@@ -30,8 +30,8 @@ async function start() {
     });
 
     // Join socketio rooms. Each user joins a seperate room.
-    io.sockets.on('connection', function (socket) {
-        socket.on('join', function (data) {
+    io.sockets.on('connection', function(socket) {
+        socket.on('join', function(data) {
             socket.join(data);
         });
     });
@@ -57,7 +57,7 @@ async function start() {
     app.use(
         session({
             store: new MemoryStore({
-                checkPeriod: 43200000, // clear every 12h
+                checkPeriod: 43200000 // clear every 12h
             }),
             secret: process.env.SESSION_SECRET,
             resave: false,

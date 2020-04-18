@@ -1,4 +1,3 @@
-
 export const state = () => ({
     list: [], // notifications will be added here
     settings: {
@@ -8,7 +7,7 @@ export const state = () => ({
         timeout: 5000,
         closeOnClick: true,
         showClose: false
-    },
+    }
 });
 
 export const mutations = {
@@ -89,4 +88,4 @@ export const getters = {
     list(state) {
         return state.list;
     }
-}
+};

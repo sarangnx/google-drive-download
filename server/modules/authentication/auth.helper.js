@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 
-class AuthHelper{
+class AuthHelper {
     constructor() {
         this.client = new google.auth.OAuth2(
             process.env.CLIENT_ID,
@@ -9,9 +9,7 @@ class AuthHelper{
         );
     }
 
-    scopes = [
-        'https://www.googleapis.com/auth/drive'
-    ]
+    scopes = ['https://www.googleapis.com/auth/drive'];
 
     /**
      * Set this to true when a user authorizes oauth2,
@@ -45,7 +43,7 @@ class AuthHelper{
      * @param {String} code - Authorization code returned to callback
      */
     async getToken(code) {
-        if(!code) {
+        if (!code) {
             throw new Error('Unauthorized');
         }
 
@@ -56,6 +54,6 @@ class AuthHelper{
 
         return tokens;
     }
-};
+}
 
 module.exports = AuthHelper;

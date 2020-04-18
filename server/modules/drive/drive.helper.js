@@ -23,7 +23,7 @@ class DriveHelper {
      * @param {Object} tokens - Tokens returned after authorization
      */
     async setToken(tokens) {
-        if(!tokens) {
+        if (!tokens) {
             throw new APIError('Session Exprired.', 401, 'SESSION_EXPIRED');
         }
 
@@ -39,7 +39,7 @@ class DriveHelper {
      * @param {String} id - Socket io room id
      */
     async download(url, filename, io, id) {
-        if(!url) {
+        if (!url) {
             throw new APIError('No Url given', 400, 'MISSING_URL');
         }
 
@@ -59,7 +59,7 @@ class DriveHelper {
         const ext = mime.getExtension(fileType);
 
         // default file naming scheme
-        if(!filename) {
+        if (!filename) {
             filename = `${Date.now()}.${ext}`;
         }
 
@@ -67,19 +67,22 @@ class DriveHelper {
          * Pass the readable stream to upload the data
          * to google drive.
          */
-        await this.drive.files.create({
-            requestBody: {
-                name: filename
+        await this.drive.files.create(
+            {
+                requestBody: {
+                    name: filename
+                },
+                media: {
+                    body: res.data
+                }
             },
-            media: {
-                body: res.data,
-            },
-        },{
-            onUploadProgress: (e) => {
-                const progress = (e.bytesRead / fileSize) * 100;
-                io.sockets.in(id).emit('upload:progress', { progress });
+            {
+                onUploadProgress: e => {
+                    const progress = (e.bytesRead / fileSize) * 100;
+                    io.sockets.in(id).emit('upload:progress', { progress });
+                }
             }
-        });
+        );
     }
 }
 

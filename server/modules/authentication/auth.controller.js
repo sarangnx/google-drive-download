@@ -2,19 +2,18 @@ const Helper = require('./auth.helper');
 const helper = new Helper();
 
 class AuthController {
-
     /**
      * Generate url for user authorization.
      * Send the url to web client.
      */
     async generateUrl(req, res, next) {
-        try{
+        try {
             const url = await helper.generateUrl();
 
             res.cookie('auth', false, { maxAge: 6000000 });
             res.redirect(url);
-        } catch(err) {
-            next (err);
+        } catch (err) {
+            next(err);
         }
     }
 
@@ -48,12 +47,12 @@ class AuthController {
             const authorized = helper.isAuthorized();
 
             res.json({
-                authorized,
+                authorized
             });
         } catch (err) {
             next(err);
         }
     }
-};
+}
 
 module.exports = AuthController;
