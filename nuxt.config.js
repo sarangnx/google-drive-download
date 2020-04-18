@@ -58,6 +58,10 @@ module.exports = {
     */
     vuetify: {
         customVariables: ['~/assets/variables.scss'],
+        optionsPath: '~/vuetify.options.js',
+        defaultAssets: {
+            icons: false
+        }
     },
     /*
     ** Build configuration
