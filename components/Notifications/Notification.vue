@@ -19,7 +19,7 @@
 
         <template v-slot:close>
             <v-btn @click.prevent.stop="close" icon v-if="showClose" class="ml-2">
-                <v-icon>mdi-close-box</v-icon>
+                <v-icon>mdi-close</v-icon>
             </v-btn>
         </template>
     </v-alert>
