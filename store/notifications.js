@@ -9,13 +9,27 @@ export const state = () => ({
         timeout: 5000,
         closeOnClick: true,
         showClose: true
-    }
+    },
 });
 
 export const mutations = {
     // set default options
     setOptions(state, options) {
         state.settings = Object.assign(state.settings, options);
+    },
+    // set Height
+    setHeight(state, { timestamp, height }) {
+        const index = state.list.findIndex(n => n.timestamp === timestamp);
+        if (index !== -1) {
+            /**
+             * you have to go to great lengths to ensure reactivity.
+             * this could've been done in a single step, but vue does
+             * not react to these changes, and the notifications
+             * wouldn't be working as expected.
+             */
+            const newObject = Object.assign({}, state.list[index], { height });
+            state.list.splice(index, 1, newObject);
+        }
     },
     // remove notification
     remove(state, timestamp) {
@@ -63,6 +77,11 @@ export const actions = {
      */
     remove({ commit }, timestamp) {
         commit('remove', timestamp);
+    },
+
+    // setHeight action thats calls setHeight mutation
+    setHeight({ commit }, { timestamp, height }) {
+        commit('setHeight', { timestamp, height });
     }
 };
 
