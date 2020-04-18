@@ -156,6 +156,7 @@ export default {
 <style lang="scss">
 .notification {
     position: absolute;
+    pointer-events: all;
     &.left {
         left: 10px;
     }
