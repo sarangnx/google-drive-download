@@ -74,10 +74,14 @@ export default {
                     url,
                     id: this.id,
                 },
+            }).then((res) => {
+                if(res.data && res.data.message){
+                    this.$success(res.data.message);
+                }
             }).catch((err) => {
                 if( err.response && err.response.data && err.response.data.error ) {
                     const error = err.response.data.error;
-                    console.error(error.message);
+                    this.$error(error.message);
                     if( error.type === 'SESSION_EXPIRED' || err.response.status === 401 ) {
                         this.authorized = false;
                     }
