@@ -162,5 +162,9 @@ export default {
     &.right {
         right: 10px;
     }
+    &.center {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 </style>
