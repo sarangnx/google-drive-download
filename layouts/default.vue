@@ -16,17 +16,20 @@
             </v-container>
         </v-content>
         <v-footer dark padless>
+            <app-footer/>
         </v-footer>
     </v-app>
 </template>
 
 <script>
 import Notifications from '@/components/Notifications/Notifications';
+import AppFooter from '@/components/appFooter';
 
 export default {
     name: 'default-layout',
     components: {
         Notifications,
+        AppFooter
     },
 };
 </script>
