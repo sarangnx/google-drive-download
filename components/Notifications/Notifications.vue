@@ -40,3 +40,14 @@ export default {
     },
 };
 </script>
+
+<style>
+.notifications {
+    position: fixed;
+    z-index: 999;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    padding: 10px;
+}
+</style>
