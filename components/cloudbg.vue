@@ -95,7 +95,7 @@ g[class*="cloud-"] {
     .cloud__bg__svg {
         height: 100%;
         width: 100%;
-        opacity: 60%;
+        opacity: 0.6;
     }
 }
 
@@ -118,14 +118,14 @@ g[class*="cloud-"] {
 @keyframes toright {
     0% {
         transform: translateX(-10%);
-        opacity: 0%;
+        opacity: 0;
     }
     50% {
-        opacity: 100%;
+        opacity: 1;
     }
     100% {
         transform: translateX(10%);
-        opacity: 0%;
+        opacity: 0;
     }
 }
 </style>
