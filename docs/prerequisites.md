@@ -36,3 +36,5 @@ In our case the end point is `/auth/callback`.
 If you are hosting the app locally the host part could be
 `http://lvh.me:3000`.So it will be `http://lvh.me:3000/auth/callback`.  
 ![Authorized URIs](./img/uri.png)
+
+[Build Steps :arrow_right:](./build.md)
