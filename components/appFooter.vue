@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column flex-grow-1">
-        <div class="pa-2 d-flex flex-column flex-md-row justify-space-around align-center">
+        <div class="pa-2 pt-10 pb-10 d-flex flex-column flex-md-row justify-space-around align-center">
             <div class="col-8 col-md-3">
                 <span class="font-weight-black white--text">BIFROST</span>
                 <div
@@ -15,7 +15,28 @@
                             x-small
                             text
                             :ripple="false"
-                            class="pa-0 text-capitalize"
+                            active-class="justify-center"
+                            class="pa-0 text-capitalize justify-start"
+                            to="/"
+                        >home</v-btn>
+                    </div>
+                    <div>
+                        <v-btn
+                            x-small
+                            text
+                            :ripple="false"
+                            active-class="justify-center"
+                            class="pa-0 text-capitalize justify-start"
+                            to="/app"
+                        >app</v-btn>
+                    </div>
+                    <div>
+                        <v-btn
+                            x-small
+                            text
+                            :ripple="false"
+                            active-class="justify-center"
+                            class="pa-0 text-capitalize justify-start"
                             to="/about"
                         >about</v-btn>
                     </div>
@@ -24,7 +45,8 @@
                             x-small
                             text
                             :ripple="false"
-                            class="pa-0 text-capitalize"
+                            active-class="justify-center"
+                            class="pa-0 text-capitalize justify-start"
                             href="https://github.com/sarangnx/google-drive-download"
                             target="_blank"
                         >
@@ -36,8 +58,9 @@
                         <v-btn
                             x-small
                             text
+                            active-class="justify-center"
                             :ripple="false"
-                            class="pa-0 text-capitalize"
+                            class="pa-0 text-capitalize justify-start"
                             to="/help"
                         >
                             help
