@@ -27,7 +27,7 @@ The GCP requirements for the project can be covered for free as
 long as you stay inside the [limits](https://cloud.google.com/free)
 that they have specified.
 
-## TABLE OF CONTENTS
+## Docs
 
  - [Prerequisites](./docs/prerequisites.md)
  - [Building the app](./docs/build.md)

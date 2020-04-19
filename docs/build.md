@@ -52,3 +52,5 @@ SESSION_SECRET=
 HOST=
 PORT=
 ```
+[Prerequisites :arrow_left:](./prerequisites.md) |
+[Home :house:](../README.md)
