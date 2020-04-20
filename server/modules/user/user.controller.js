@@ -8,13 +8,20 @@ class UserController {
     async profile(req, res, next) {
         try {
             const { tokens } = req.session;
+            let { profile } = req.session;
 
-            await helper.setToken(tokens);
-
-            const profile = await helper.profile();
+            // if profile is not in session fetch it.
+            if (!profile) {
+                // set auth token
+                await helper.setToken(tokens);
+                // get profile
+                profile = await helper.profile();
+                // add it to session
+                req.session.profile = profile;
+            }
 
             res.json({
-                profile,
+                profile
             });
         } catch (err) {
             next(err);
