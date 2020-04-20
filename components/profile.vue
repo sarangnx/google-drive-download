@@ -7,7 +7,7 @@
                 </v-avatar>
             </template>
 
-            <v-btn small color="secondary">
+            <v-btn small color="secondary" @click="logout">
                 Logout
                 <v-icon right>mdi-logout</v-icon>
             </v-btn>
@@ -26,6 +26,21 @@ export default {
         photo: {
             type: String,
             default: '/google-logo.svg'
+        }
+    },
+    methods: {
+        logout() {
+            this.$axios({
+                method: 'post',
+                url: '/auth/logout',
+            }).then((res) => {
+                if(res.data && res.data.message){
+                    this.$success(res.data.message);
+                    this.$emit('logout');
+                }
+            }).catch((err) => {
+                this.$error('something went wrong!');
+            });
         }
     }
 };

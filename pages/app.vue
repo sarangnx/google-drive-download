@@ -41,7 +41,7 @@
                 </v-row>
             </v-container>
         </div>
-        <profile v-if="profile" v-bind="profile"/>
+        <profile v-if="profile" v-bind="profile" @logout="logout"/>
     </v-col>
 </template>
 
@@ -108,6 +108,10 @@ export default {
                     }
                 }
             });
+        },
+        logout() {
+            this.authorized = false;
+            this.profile = null;
         },
         parseCookie() {
             let cookie = document.cookie.split(';');
