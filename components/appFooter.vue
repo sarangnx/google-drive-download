@@ -66,6 +66,18 @@
                             help
                         </v-btn>
                     </div>
+                    <div>
+                        <v-btn
+                            x-small
+                            text
+                            active-class="justify-center"
+                            :ripple="false"
+                            class="pa-0 text-capitalize justify-start"
+                            to="/privacy"
+                        >
+                            privacy
+                        </v-btn>
+                    </div>
                 </div>
             </div>
         </div>
