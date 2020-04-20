@@ -8,9 +8,11 @@ select an existing project or create a new project.
 **Note:** *Creating a project in Developer Console creates a new GCP project.*
 
 2. In the dashboard click on `Enable Apis and Services`.
-Search for Google Drive API and enable this.  
+Search for Google Drive API, and Google People API and
+enable both of them in order to use them in the app.  
 **Note:** To do this you must complete *billing and verification* first.  
-![Enable Google Drive Api](./img/driveapi.png)
+![Enable Google Drive Api](./img/driveapi.png)  
+![Enable People Api](./img/peopleapi.png)
 
 3. After its done create consent screen.  
 ![Consent Screen](./img/consent.png)
