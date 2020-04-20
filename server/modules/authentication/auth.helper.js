@@ -9,7 +9,10 @@ class AuthHelper {
         );
     }
 
-    scopes = ['https://www.googleapis.com/auth/drive'];
+    scopes = [
+        'https://www.googleapis.com/auth/drive',
+        'https://www.googleapis.com/auth/userinfo.profile'
+    ];
 
     /**
      * Set this to true when a user authorizes oauth2,
