@@ -10,4 +10,6 @@ router.get('/callback', controller.getToken);
 
 router.get('/isauthorized', controller.isAuthorized);
 
+router.post('/logout', controller.logout);
+
 module.exports = router;

@@ -53,6 +53,24 @@ class AuthController {
             next(err);
         }
     }
+
+    /**
+     * Logout user by destroying the session.
+     */
+    async logout(req, res, next) {
+        try {
+            // destroy session
+            req.session.destroy();
+            // destory cookie
+            res.cookie('auth', false, { maxAge: 6000000 });
+
+            res.json({
+                message: 'Logged out.'
+            });
+        } catch (err) {
+            next(err);
+        }
+    }
 }
 
 module.exports = AuthController;
