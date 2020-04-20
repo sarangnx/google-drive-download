@@ -41,6 +41,7 @@
                 </v-row>
             </v-container>
         </div>
+        <profile v-if="profile" v-bind="profile"/>
     </v-col>
 </template>
 
@@ -48,11 +49,13 @@
 import io from 'socket.io-client';
 import fullHeight from '@/mixins/fullHeight';
 import CloudBg from '@/components/cloudbg';
+import Profile from '@/components/profile';
 
 export default {
     mixins: [fullHeight],
     components: {
         CloudBg,
+        Profile
     },
     name: 'app',
     data: () => ({
@@ -60,6 +63,7 @@ export default {
         link: null,
         id: null,
         socket: null,
+        profile: null
     }),
     methods:{
         download() {
@@ -88,6 +92,23 @@ export default {
                 }
             });
         },
+        getProfile() {
+            this.$axios({
+                method: 'get',
+                url: '/user/profile',
+            }).then((res) => {
+                if(res.data && res.data.profile){
+                    this.profile = Object.assign(res.data.profile);
+                }
+            }).catch((err) => {
+                if( err.response && err.response.data && err.response.data.error ) {
+                    const error = err.response.data.error;
+                    if( error.type === 'SESSION_EXPIRED' || err.response.status === 401 ) {
+                        this.authorized = false;
+                    }
+                }
+            });
+        },
         parseCookie() {
             let cookie = document.cookie.split(';');
             cookie = cookie.map((item) => {
@@ -105,6 +126,10 @@ export default {
     },
     mounted() {
         this.parseCookie();
+        // Get profile if authorized.
+        if(this.authorized) {
+            this.getProfile();
+        }
 
         // create a socket connection to server.
         this.socket = io();
