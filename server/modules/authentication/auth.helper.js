@@ -32,7 +32,8 @@ class AuthHelper {
      */
     async generateUrl() {
         const url = await this.client.generateAuthUrl({
-            scope: this.scopes
+            scope: this.scopes,
+            prompt: 'select_account'
         });
 
         return url;
