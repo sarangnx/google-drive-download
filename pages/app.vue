@@ -42,6 +42,11 @@
             </v-container>
         </div>
         <profile v-if="profile" v-bind="profile" @logout="logout"/>
+        <downloads
+            :open="openDownloads"
+            @close="openDownloads = false"
+            :downloads="downloadList"
+        />
     </v-col>
 </template>
 
@@ -50,33 +55,38 @@ import io from 'socket.io-client';
 import fullHeight from '@/mixins/fullHeight';
 import CloudBg from '@/components/cloudbg';
 import Profile from '@/components/profile';
+import Downloads from '@/components/downloads';
 
 export default {
     mixins: [fullHeight],
     components: {
         CloudBg,
-        Profile
+        Profile,
+        Downloads
     },
     name: 'app',
     data: () => ({
         authorized: false,
         link: null,
-        id: null,
+        ids: [],
         socket: null,
-        profile: null
+        profile: null,
+        downloadList: {},
+        openDownloads: true,
     }),
     methods:{
         download() {
             const url = this.link;
-            this.id = Date.now();
-            this.socket.emit('join', this.id);
+            const id = Date.now();
+            this.ids.push(id);
+            this.socket.emit('join', id);
 
             this.$axios({
                 method: 'post',
                 url: '/drive/download',
                 data: {
                     url,
-                    id: this.id,
+                    id,
                 },
             }).then((res) => {
                 if(res.data && res.data.message){
@@ -138,7 +148,18 @@ export default {
         // create a socket connection to server.
         this.socket = io();
         this.socket.on('upload:progress', (data) => {
-            console.log(data);
+            this.$set(
+                this.downloadList,
+                data.id,
+                Object.assign({}, this.downloadList[data.id], data)
+            );
+        });
+        this.socket.on('upload:size', (data) => {
+            this.$set(
+                this.downloadList,
+                data.id,
+                Object.assign({}, this.downloadList[data.id], data)
+            );
         });
     }
 }
