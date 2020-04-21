@@ -51,7 +51,9 @@ module.exports = {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        baseURL: process.env.NODE_ENV === 'development' ? process.env.HOST : 'https://google-drive-download.herokuapp.com'
+        baseURL: process.env.NODE_ENV === 'development' ?
+            `http://${process.env.HOST}:${process.env.PORT}`:
+            'https://google-drive-download.herokuapp.com'
     },
     /*
     ** vuetify module configuration
