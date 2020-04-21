@@ -68,7 +68,7 @@ export default {
         socket: null,
         profile: null,
         downloadList: {},
-        openDownloads: true,
+        openDownloads: null,
     }),
     methods:{
         download() {
