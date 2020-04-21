@@ -63,11 +63,19 @@ class DriveHelper {
             filename = `${Date.now()}.${ext}`;
         }
 
+        // send totalsize, url and filename to user.
+        io.sockets.in(id).emit('upload:size', {
+            id,
+            totalBytes: fileSize,
+            url,
+            filename
+        });
+
         /**
          * Pass the readable stream to upload the data
          * to google drive.
          */
-        await this.drive.files.create(
+        return this.drive.files.create(
             {
                 requestBody: {
                     name: filename
@@ -79,7 +87,11 @@ class DriveHelper {
             {
                 onUploadProgress: e => {
                     const progress = (e.bytesRead / fileSize) * 100;
-                    io.sockets.in(id).emit('upload:progress', { progress });
+                    io.sockets.in(id).emit('upload:progress', {
+                        id,
+                        progress,
+                        bytesRead: e.bytesRead
+                    });
                 }
             }
         );
