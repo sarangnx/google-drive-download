@@ -41,12 +41,8 @@
                 </v-row>
             </v-container>
         </div>
-        <profile v-if="profile" v-bind="profile" @logout="logout"/>
-        <downloads
-            :open="openDownloads"
-            @close="openDownloads = false"
-            :downloads="downloadList"
-        />
+        <profile v-if="profile" v-bind="profile" @logout="logout" @open="openDownloads = true"/>
+        <downloads :open="openDownloads" @close="openDownloads = false" :downloads="downloadList"/>
     </v-col>
 </template>
 
