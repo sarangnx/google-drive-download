@@ -17,3 +17,21 @@ html {
 .__font12 {
     font-size: 12px;
 }
+
+// Custom scrollbar
+.__scrollbar {
+    &::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #373737;
+    }
+}
