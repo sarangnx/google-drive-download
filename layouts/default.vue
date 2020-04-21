@@ -6,7 +6,7 @@
             elevate-on-scroll
             color="#2541B2"
         >
-            <div class="font-weight-black white--text">
+            <div class="font-weight-black white--text __pointer" @click="$router.push('/')">
                 BIFROST
             </div>
         </v-app-bar>
