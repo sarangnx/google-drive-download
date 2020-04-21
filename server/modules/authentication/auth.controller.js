@@ -32,7 +32,7 @@ class AuthController {
             req.session.tokens = tokens;
 
             res.cookie('auth', true, { maxAge: 6000000 });
-            res.redirect('/');
+            res.redirect('/app');
         } catch (err) {
             next(err);
         }
