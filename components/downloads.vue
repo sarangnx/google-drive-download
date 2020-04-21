@@ -55,7 +55,8 @@ export default {
         close() {
             this.$emit('close');
         },
-        parseBytes(bytes) {
+        parseBytes(bytes = 0) {
+            bytes = Number(bytes);
             const KB = bytes / 1024;
             const MB = KB / 1024;
             const GB = MB / 1024;
